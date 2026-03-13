@@ -9,9 +9,23 @@ import ThemeToggle from "./ThemeToggle";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 50);
+
+      const sections = navLinks.map((link) => link.href.replace("#", ""));
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.getBoundingClientRect().top <= 120) {
+          setActiveSection(`#${sections[i]}`);
+          return;
+        }
+      }
+      setActiveSection("");
+    };
+
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -38,9 +52,15 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="font-mono text-xs text-muted hover:text-accent transition-colors"
+                className={`font-mono text-xs transition-colors ${
+                  activeSection === link.href
+                    ? "text-accent"
+                    : "text-muted hover:text-accent"
+                }`}
               >
-                <span className="text-accent/50 mr-1">{String(i).padStart(2, "0")}.</span>
+                <span className={`mr-1 ${activeSection === link.href ? "text-accent" : "text-accent/50"}`}>
+                  {String(i).padStart(2, "0")}.
+                </span>
                 {link.label}
               </a>
             ))}
@@ -82,9 +102,15 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="font-mono text-sm text-muted hover:text-accent transition-colors py-2"
+                  className={`font-mono text-sm transition-colors py-2 ${
+                    activeSection === link.href
+                      ? "text-accent"
+                      : "text-muted hover:text-accent"
+                  }`}
                 >
-                  <span className="text-accent/50 mr-2">{String(i).padStart(2, "0")}.</span>
+                  <span className={`mr-2 ${activeSection === link.href ? "text-accent" : "text-accent/50"}`}>
+                    {String(i).padStart(2, "0")}.
+                  </span>
                   {link.label}
                 </a>
               ))}

@@ -196,25 +196,25 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.9 }}
-          className="mt-8 flex flex-wrap items-center justify-center gap-3"
+          className="mt-8 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3"
         >
           <a
             href="#contact"
-            className="flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-black hover:bg-accent-light transition-colors"
+            className="flex items-center justify-center gap-2 rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-black hover:bg-accent-light transition-colors w-full sm:w-auto"
           >
             <Mail size={15} />
             Contact Me
           </a>
           <a
             href={personalInfo.resumeUrl}
-            className="flex items-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground hover:bg-surface-light hover:border-accent/30 transition-colors"
+            className="flex items-center justify-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground hover:bg-surface-light hover:border-accent/30 transition-colors w-full sm:w-auto"
           >
             <Download size={15} />
             Download CV
           </a>
           <a
             href="#projects"
-            className="flex items-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground hover:bg-surface-light hover:border-accent/30 transition-colors"
+            className="flex items-center justify-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground hover:bg-surface-light hover:border-accent/30 transition-colors w-full sm:w-auto"
           >
             <FolderOpen size={15} />
             View Projects
