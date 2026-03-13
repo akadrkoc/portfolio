@@ -74,7 +74,7 @@ export default function Contact() {
                 {socials.map(({ icon: Icon, label, value, href }) => (
                   <div
                     key={label}
-                    className="flex items-center gap-3 rounded-md bg-surface-light border border-border p-3"
+                    className="flex items-center gap-3 rounded-md bg-surface-light border border-border p-3 hover:border-accent/30 transition-colors"
                   >
                     <Icon size={14} className="text-accent flex-shrink-0" />
                     <div className="font-mono text-xs min-w-0">
