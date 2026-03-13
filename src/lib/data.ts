@@ -58,48 +58,6 @@ export const skills = {
   ],
 };
 
-export const experience = [
-  {
-    title: "Senior Full Stack Developer",
-    company: "TechCorp Inc.",
-    location: "San Francisco, CA",
-    startDate: "Jan 2022",
-    endDate: "Present",
-    description: [
-      "Led development of a microservices platform serving 100K+ daily active users",
-      "Reduced API response times by 40% through query optimization and caching strategies",
-      "Mentored a team of 4 junior developers, conducting code reviews and pair programming sessions",
-      "Architected a real-time notification system using WebSockets and Redis Pub/Sub",
-    ],
-  },
-  {
-    title: "Full Stack Developer",
-    company: "StartupXYZ",
-    location: "Remote",
-    startDate: "Jun 2020",
-    endDate: "Dec 2021",
-    description: [
-      "Built the customer-facing dashboard from scratch using React, TypeScript, and Tailwind CSS",
-      "Designed and implemented RESTful APIs handling 50K+ requests/day with Node.js and Express",
-      "Integrated third-party services including Stripe, SendGrid, and AWS S3",
-      "Improved test coverage from 45% to 85% using Jest and React Testing Library",
-    ],
-  },
-  {
-    title: "Junior Developer",
-    company: "WebAgency Co.",
-    location: "New York, NY",
-    startDate: "Aug 2018",
-    endDate: "May 2020",
-    description: [
-      "Developed responsive websites and web applications for 15+ clients across various industries",
-      "Collaborated with designers to translate Figma mockups into pixel-perfect implementations",
-      "Maintained and updated legacy PHP applications while migrating features to modern React stack",
-      "Participated in daily standups, sprint planning, and retrospectives in an Agile environment",
-    ],
-  },
-];
-
 export const projects = [
   {
     title: "E-Commerce Platform",
@@ -153,54 +111,10 @@ export const education = [
   },
 ];
 
-export const certifications = [
-  {
-    name: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services",
-    date: "2023",
-  },
-  {
-    name: "Professional Scrum Master I",
-    issuer: "Scrum.org",
-    date: "2022",
-  },
-  {
-    name: "Meta Front-End Developer Certificate",
-    issuer: "Meta / Coursera",
-    date: "2021",
-  },
-];
-
-export const testimonials = [
-  {
-    quote:
-      "John is one of the most talented developers I've worked with. His ability to break down complex problems and deliver clean, maintainable solutions is exceptional.",
-    name: "Sarah Chen",
-    title: "Engineering Manager at TechCorp",
-    avatar: "/images/testimonial-1.jpg",
-  },
-  {
-    quote:
-      "Working with John was a game-changer for our startup. He didn't just build features — he helped us think through the architecture and make decisions that scaled with our growth.",
-    name: "Michael Rodriguez",
-    title: "CTO at StartupXYZ",
-    avatar: "/images/testimonial-2.jpg",
-  },
-  {
-    quote:
-      "John's technical skills are matched only by his communication and teamwork. He elevated our entire team's capabilities through mentoring and knowledge sharing.",
-    name: "Emily Watson",
-    title: "Senior Developer at WebAgency",
-    avatar: "/images/testimonial-3.jpg",
-  },
-];
-
 export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Education", href: "#education" },
-  { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];

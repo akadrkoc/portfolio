@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Mail, FolderOpen, Terminal } from "lucide-react";
+import { ArrowDown, Download, Mail, FolderOpen, Terminal, Github, Linkedin } from "lucide-react";
 import { personalInfo } from "@/lib/data";
 
 function useTypewriter(text: string, speed = 50, delay = 1000) {
@@ -22,6 +22,14 @@ function useTypewriter(text: string, speed = 50, delay = 1000) {
   return displayed;
 }
 
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
+}
+
 export default function Hero() {
   const typed = useTypewriter(personalInfo.tagline, 40, 800);
 
@@ -30,16 +38,58 @@ export default function Hero() {
       id="hero"
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-4"
     >
-      {/* Grid dot background */}
-      <div className="absolute inset-0 bg-grid opacity-40" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,var(--background)_70%)]" />
+      <div className="relative z-10 mx-auto max-w-3xl w-full">
+        {/* Avatar + intro */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col items-center mb-8"
+        >
+          <div className="h-20 w-20 rounded-full border-2 border-accent bg-accent/10 flex items-center justify-center mb-4">
+            <span className="font-mono text-xl font-bold text-accent">
+              {getInitials(personalInfo.name)}
+            </span>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="flex items-center gap-3"
+          >
+            <a
+              href={personalInfo.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted hover:text-accent transition-colors"
+              aria-label="GitHub"
+            >
+              <Github size={16} />
+            </a>
+            <a
+              href={personalInfo.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted hover:text-accent transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={16} />
+            </a>
+            <a
+              href={`mailto:${personalInfo.email}`}
+              className="text-muted hover:text-accent transition-colors"
+              aria-label="Email"
+            >
+              <Mail size={16} />
+            </a>
+          </motion.div>
+        </motion.div>
 
-      <div className="relative z-10 mx-auto max-w-3xl">
         {/* Terminal window */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className="rounded-lg border border-border bg-surface overflow-hidden shadow-2xl shadow-accent/5"
         >
           {/* Title bar */}
@@ -61,7 +111,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.3 }}
             >
               <span className="text-accent">&#10095;</span>
               <span className="text-cyan ml-2">whoami</span>
@@ -70,8 +120,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="pl-0"
+              transition={{ delay: 0.6 }}
             >
               <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight font-sans text-foreground">
                 {personalInfo.name}
@@ -85,7 +134,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
+              transition={{ delay: 0.8 }}
               className="pt-2"
             >
               <span className="text-accent">&#10095;</span>
@@ -96,7 +145,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.9 }}
+              transition={{ delay: 1.0 }}
               className="text-muted"
             >
               {typed}
@@ -107,7 +156,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.2 }}
+              transition={{ delay: 1.3 }}
               className="pt-2"
             >
               <span className="text-accent">&#10095;</span>
@@ -118,7 +167,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.5 }}
+              transition={{ delay: 1.6 }}
               className="text-sm"
             >
               <span className="text-muted">{"{"}</span>
@@ -146,7 +195,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.8 }}
+          transition={{ delay: 1.9 }}
           className="mt-8 flex flex-wrap items-center justify-center gap-3"
         >
           <a
@@ -178,7 +227,7 @@ export default function Hero() {
         href="#about"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.2 }}
+        transition={{ delay: 2.3 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
         aria-label="Scroll down"
       >
