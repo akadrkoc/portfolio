@@ -21,7 +21,7 @@ export default function About() {
           subtitle="who I am and what drives my work"
         />
 
-        <AnimatedSection className="rounded-lg border border-border bg-surface p-6 sm:p-8">
+        <AnimatedSection className="rounded-lg border border-border bg-surface p-6 sm:p-8 hover:border-accent/20 transition-colors duration-300">
           {/* Code-style comment block */}
           <div className="font-mono text-sm space-y-4 leading-relaxed">
             <div>
@@ -59,10 +59,10 @@ export default function About() {
           {highlights.map(({ icon: Icon, label, key }) => (
             <div
               key={key}
-              className="flex items-center gap-2.5 rounded-md bg-surface border border-border p-3 font-mono text-xs"
+              className="group flex items-center gap-2.5 rounded-md bg-surface border border-border p-3 font-mono text-xs hover:border-accent/30 hover:bg-surface-light transition-all duration-200 cursor-default"
             >
-              <Icon size={14} className="text-accent flex-shrink-0" />
-              <span className="text-muted">{label}</span>
+              <Icon size={14} className="text-accent flex-shrink-0 group-hover:scale-110 transition-transform" />
+              <span className="text-muted group-hover:text-foreground transition-colors">{label}</span>
             </div>
           ))}
         </AnimatedSection>

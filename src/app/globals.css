@@ -15,6 +15,21 @@
   --red: #f85149;
 }
 
+[data-theme="light"] {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --accent: #0ea5e9;
+  --accent-light: #38bdf8;
+  --surface: #ffffff;
+  --surface-light: #f1f5f9;
+  --border: #cbd5e1;
+  --muted: #64748b;
+  --cyan: #0284c7;
+  --orange: #ea580c;
+  --pink: #db2777;
+  --red: #dc2626;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -36,6 +51,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 html {
@@ -45,6 +61,10 @@ html {
 ::selection {
   background: var(--accent);
   color: black;
+}
+
+[data-theme="light"] ::selection {
+  color: white;
 }
 
 /* Custom scrollbar */
