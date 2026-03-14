@@ -1,5 +1,3 @@
-"use client";
-
 import { skills } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
 import AnimatedSection from "./AnimatedSection";

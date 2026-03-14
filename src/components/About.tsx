@@ -1,5 +1,3 @@
-"use client";
-
 import { MapPin, Briefcase, Code2, Zap, GitBranch } from "lucide-react";
 import { about, personalInfo } from "@/lib/data";
 import SectionHeading from "./SectionHeading";

@@ -1,5 +1,3 @@
-"use client";
-
 import { Mail, Linkedin, Github, MapPin, Send } from "lucide-react";
 import { personalInfo } from "@/lib/data";
 import SectionHeading from "./SectionHeading";

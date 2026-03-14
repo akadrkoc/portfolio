@@ -1,5 +1,3 @@
-"use client";
-
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -8,12 +6,14 @@ import Projects from "@/components/Projects";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import SplashScreen from "@/components/SplashScreen";
+import BackToTop from "@/components/BackToTop";
 
 export default function Home() {
   return (
-    <>
+    <SplashScreen>
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <About />
         <Skills />
@@ -22,6 +22,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-    </>
+      <BackToTop />
+    </SplashScreen>
   );
 }
