@@ -10,7 +10,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -32,6 +31,7 @@ export default function Navbar() {
 
   return (
     <nav
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-background/90 backdrop-blur-md border-b border-border"
@@ -52,6 +52,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
+                aria-current={activeSection === link.href ? "true" : undefined}
                 className={`font-mono text-xs transition-colors ${
                   activeSection === link.href
                     ? "text-accent"
@@ -80,6 +81,7 @@ export default function Navbar() {
               className="text-foreground"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>

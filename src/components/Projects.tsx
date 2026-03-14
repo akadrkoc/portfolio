@@ -1,5 +1,3 @@
-"use client";
-
 import { ExternalLink, Github, Folder } from "lucide-react";
 import { projects } from "@/lib/data";
 import SectionHeading from "./SectionHeading";

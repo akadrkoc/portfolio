@@ -1,5 +1,3 @@
-"use client";
-
 import { Github, Linkedin, Mail, Terminal } from "lucide-react";
 import { personalInfo, navLinks } from "@/lib/data";
 

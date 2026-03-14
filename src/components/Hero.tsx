@@ -1,25 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Download, Mail, FolderOpen, Terminal, Github, Linkedin } from "lucide-react";
 import { personalInfo } from "@/lib/data";
 
 function useTypewriter(text: string, speed = 50, delay = 1000) {
   const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
   useEffect(() => {
     let i = 0;
     const timeout = setTimeout(() => {
       const interval = setInterval(() => {
         setDisplayed(text.slice(0, i + 1));
         i++;
-        if (i >= text.length) clearInterval(interval);
+        if (i >= text.length) {
+          clearInterval(interval);
+          setDone(true);
+        }
       }, speed);
       return () => clearInterval(interval);
     }, delay);
     return () => clearTimeout(timeout);
   }, [text, speed, delay]);
-  return displayed;
+  return { displayed, done };
 }
 
 function getInitials(name: string) {
@@ -31,14 +35,25 @@ function getInitials(name: string) {
 }
 
 export default function Hero() {
-  const typed = useTypewriter(personalInfo.tagline, 40, 800);
+  const { displayed: typed, done: typingDone } = useTypewriter(personalInfo.tagline, 40, 800);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-4"
     >
-      <div className="relative z-10 mx-auto max-w-3xl w-full">
+      <motion.div
+        style={{ y: contentY, opacity: contentOpacity }}
+        className="relative z-10 mx-auto max-w-3xl w-full"
+      >
         {/* Avatar + intro */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -149,7 +164,7 @@ export default function Hero() {
               className="text-muted"
             >
               {typed}
-              <span className="animate-blink text-accent">&#9608;</span>
+              {!typingDone && <span className="animate-blink text-accent">&#9608;</span>}
             </motion.div>
 
             {/* Prompt 3 */}
@@ -220,7 +235,7 @@ export default function Hero() {
             View Projects
           </a>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Scroll indicator */}
       <motion.a
